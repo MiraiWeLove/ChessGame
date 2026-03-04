@@ -9,12 +9,13 @@ public class Tile : MonoBehaviour, IClickable
     [field: SerializeField] public Perks tilePerk { get; private set; }
 
     [SerializeField] private TileEffect effect;
-
-    public void Initialize(Vector2Int pos)
+    [SerializeField] private BoardManager board;
+    public void Initialize(Vector2Int pos, BoardManager board)
     {
+        this.board = board;
+
         GridPosition = pos;
         tileModel.gameObject.GetComponent<Renderer>().material = defaultMaterial;
-
     }
 
     public void OnClick()
@@ -32,4 +33,9 @@ public class Tile : MonoBehaviour, IClickable
         effect?.OnEnter(this, piece);
     }
 
+    public void Break()
+    {
+        board.UnregisterTile(GridPosition);
+        Destroy(gameObject);
+    }
 }

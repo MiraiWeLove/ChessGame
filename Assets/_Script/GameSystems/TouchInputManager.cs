@@ -4,6 +4,7 @@ public class TouchInputManager : MonoBehaviour
 {
     private Camera cam;
 
+    [SerializeField] private GameController gameController;
     private void Awake()
     {
         cam = Camera.main;
@@ -44,12 +45,12 @@ public class TouchInputManager : MonoBehaviour
                 clickable.OnClick();
             } else
             {
-                GameController.Instance.DeselectPiece();
+                gameController.DeselectPiece();
             }
         }
         else
         {
-            GameController.Instance.DeselectPiece();
+            gameController.DeselectPiece();
         }
     }
 }

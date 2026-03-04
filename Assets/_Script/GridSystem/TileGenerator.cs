@@ -3,6 +3,8 @@ using UnityEngine;
 public class TileGenerator : MonoBehaviour
 {
     [SerializeField] private Transform tileParent;
+    [SerializeField] private BoardManager boardManager;
+    [SerializeField] private PieceManager pieceManager;
     [SerializeField] private SGridMap gridMap; //TEMPORARY----
 
     [Space]
@@ -28,11 +30,11 @@ public class TileGenerator : MonoBehaviour
             );
 
             Tile view = tileObj.GetComponent<Tile>();
-            view.Initialize(c.cellPosition);
+            view.Initialize(c.cellPosition, boardManager);
 
-            GameController.Instance.RegisterTile(view);
+            boardManager.RegisterTile(view);
 
-            if (c.cellPrefab == finishPrefab) GameController.Instance.RegisterWinTile(c.cellPosition);
+            if (c.cellPrefab == finishPrefab) boardManager.RegisterWinTile(c.cellPosition);
 
             if (c.perkPrefab != null)
             {
@@ -46,7 +48,7 @@ public class TileGenerator : MonoBehaviour
                 Perks perkScript = perkObj.GetComponent<Perks>();
                 perkScript.Initialize(c.cellPosition);
 
-                GameController.Instance.RegisterPerk(perkScript);
+                boardManager.RegisterPerk(perkScript);
             }
 
             if (c.pieceData != null)
@@ -60,12 +62,12 @@ public class TileGenerator : MonoBehaviour
                 if (c.pieceData.isEnemy)
                 {
                     EnemyPiece script = pieceObj.AddComponent<EnemyPiece>();
-                    GameController.Instance.RegisterEnemyPiece(script);
+                    pieceManager.RegisterEnemyPiece(script);
                 }
                 else
                 {
                     PlayerPiece script = pieceObj.AddComponent<PlayerPiece>();
-                    GameController.Instance.RegisterPlayerPiece(script);
+                    pieceManager.RegisterPlayerPiece(script);
                 }
 
                 Piece pieceScript = pieceObj.GetComponent<Piece>();

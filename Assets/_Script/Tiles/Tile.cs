@@ -4,6 +4,8 @@ public class Tile : MonoBehaviour, IClickable
 {
     [field: SerializeField] public Material defaultMaterial { get; private set; }
     [field: SerializeField] public Material activeMaterial { get; private set; }
+    [field: SerializeField] public Material attackMaterial { get; private set; }
+
     public Vector2Int GridPosition { get; private set; }
     [field: SerializeField] public GameObject tileModel { get; private set; }
     [field: SerializeField] public Perks tilePerk { get; private set; }

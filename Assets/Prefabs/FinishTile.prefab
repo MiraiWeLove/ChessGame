@@ -69,7 +69,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <defaultMaterial>k__BackingField: {fileID: 2100000, guid: 99940d1ac1ff90246be1e5dfe9eec24d, type: 2}
   <activeMaterial>k__BackingField: {fileID: 2100000, guid: 06486922dbc3ad246b6ed55c3c3568f4, type: 2}
+  <attackMaterial>k__BackingField: {fileID: 2100000, guid: 2bbe1fa853610a04d849316fd6a4d0bb, type: 2}
   <tileModel>k__BackingField: {fileID: 6923105220574684651}
+  <tilePerk>k__BackingField: {fileID: 0}
+  effect: {fileID: 0}
+  board: {fileID: 0}
 --- !u!1 &6923105220574684651
 GameObject:
   m_ObjectHideFlags: 0

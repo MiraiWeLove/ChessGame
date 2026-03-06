@@ -69,6 +69,7 @@ public class PieceManager : MonoBehaviour
         return null;
     }
 
+
     public void ClearPieces()
     {
         foreach (var p in new List<PlayerPiece>(playerPieces))

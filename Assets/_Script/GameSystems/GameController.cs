@@ -5,6 +5,8 @@ public class GameController : MonoBehaviour
     private Piece selectedPiece;
     [SerializeField] private BoardManager board;
     [SerializeField] private MoveManager moveManager;
+    [SerializeField] private TurnManager turnManager;
+
     public static GameController Instance;
 
     private void Awake()
@@ -22,7 +24,7 @@ public class GameController : MonoBehaviour
     public void SelectPiece(Piece piece)
     {
         selectedPiece = piece;
-        board.HighlightTiles(piece.GetAvailableMoves());
+        board.HighlightTiles(piece.GetAvailableMoves(), piece.GetAttackMoves());
     }
     public void DeselectPiece()
     {
@@ -36,8 +38,9 @@ public class GameController : MonoBehaviour
     {
         if (selectedPiece == null) return;
 
-        if (!selectedPiece.GetAvailableMoves().Contains(pos)) return;
+        if (!selectedPiece.GetAvailableMoves().Contains(pos) && !selectedPiece.GetAttackMoves().Contains(pos)) return;
 
         moveManager.ExecuteMove(selectedPiece, pos);
+        turnManager.ExecuteEnemyTurn();
     }
 }

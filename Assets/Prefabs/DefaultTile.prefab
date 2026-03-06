@@ -48,7 +48,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <defaultMaterial>k__BackingField: {fileID: 2100000, guid: 610be771dde429440bc2cefcf5d98e44, type: 2}
   <activeMaterial>k__BackingField: {fileID: 2100000, guid: 903997b4bf0b6ec439713a843636024d, type: 2}
+  <attackMaterial>k__BackingField: {fileID: 2100000, guid: 2bbe1fa853610a04d849316fd6a4d0bb, type: 2}
   <tileModel>k__BackingField: {fileID: 6585700754244742081}
+  <tilePerk>k__BackingField: {fileID: 0}
+  effect: {fileID: 0}
+  board: {fileID: 0}
 --- !u!65 &411832637974148663
 BoxCollider:
   m_ObjectHideFlags: 0

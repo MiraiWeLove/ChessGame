@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BoardManager : MonoBehaviour
@@ -7,6 +8,7 @@ public class BoardManager : MonoBehaviour
     private Dictionary<Vector2Int, Perks> perks = new();
 
     private Vector2Int winTile;
+    [SerializeField] private PieceManager pieceManager;
 
     public void RegisterTile(Tile tile)
     {
@@ -86,7 +88,7 @@ public class BoardManager : MonoBehaviour
 
 
     // VISUALS -------------------VISUALS ---------------------------
-    public void HighlightTiles(List<Vector2Int> moves)
+    public void HighlightTiles(List<Vector2Int> moves, List<Vector2Int> attackMoves)
     {
         if (moves != null)
         {
@@ -95,6 +97,23 @@ public class BoardManager : MonoBehaviour
                 if (tiles.TryGetValue(move, out Tile tile))
                 {
                     tile.tileModel.GetComponent<Renderer>().material = tile.activeMaterial;
+                }
+            }
+        }
+
+        if (attackMoves != null)
+        {
+            foreach(var move in attackMoves)
+            {
+                if (tiles.TryGetValue(move, out Tile tile))
+                {
+                    foreach (var enemy in pieceManager.EnemyPieces)
+                    {
+                        if (enemy.Position == tile.GridPosition)
+                        {
+                            tile.tileModel.GetComponent<Renderer>().material = tile.attackMaterial;
+                        }
+                    }
                 }
             }
         }

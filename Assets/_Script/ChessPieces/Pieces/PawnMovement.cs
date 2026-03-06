@@ -10,10 +10,7 @@ public class PawnMovement : MovementStrategy
 
         Vector2Int[] dirs =
         {
-            Vector2Int.right,
-            Vector2Int.left,
-            Vector2Int.up,
-            Vector2Int.down
+            Vector2Int.right
 
         };
 

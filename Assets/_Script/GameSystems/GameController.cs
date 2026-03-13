@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -6,6 +7,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private BoardManager board;
     [SerializeField] private MoveManager moveManager;
     [SerializeField] private TurnManager turnManager;
+    [SerializeField] private PieceManager pieceManager;
 
     public static GameController Instance;
 
@@ -38,9 +40,20 @@ public class GameController : MonoBehaviour
     {
         if (selectedPiece == null) return;
 
-        if (!selectedPiece.GetAvailableMoves().Contains(pos) && !selectedPiece.GetAttackMoves().Contains(pos)) return;
+        if (!selectedPiece.GetAvailableMoves().Contains(pos) && !selectedPiece.GetAttackMoves().Contains(pos) || pieceManager.PlayerPieces.Any(p => p.Position == pos)) return;
 
         moveManager.ExecuteMove(selectedPiece, pos);
         turnManager.ExecuteEnemyTurn();
+    }
+
+    public void DeclareWin()
+    {
+        UIController.Instance.HaveWon();
+    }
+
+    public void ClearScene()
+    {
+        board.ClearBoard();
+        pieceManager.ClearPieces();
     }
 }

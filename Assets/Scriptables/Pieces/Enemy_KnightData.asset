@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ee7f5753a2592d498041723f825fcdb, type: 3}
-  m_Name: PawnData_Enemy
+  m_Name: Enemy_KnightData
   m_EditorClassIdentifier: 
-  <mesh>k__BackingField: {fileID: 1705324974331375986, guid: d32144f41c00cea4eb83a8146e0745fd, type: 3}
+  <mesh>k__BackingField: {fileID: 2185210024652205897, guid: 27e63cffcd4b2c34cb94a5d1c159e35e, type: 3}
   <material>k__BackingField: {fileID: 2100000, guid: 5418bcc562c968b4bb5b7c20bbb5a863, type: 2}
-  <movementType>k__BackingField: {fileID: 11400000, guid: a84fd602458a89346a58853370516e90, type: 2}
+  <movementType>k__BackingField: {fileID: 11400000, guid: 77376787e010b9f4eb7e918ad406763d, type: 2}
   <isEnemy>k__BackingField: 1

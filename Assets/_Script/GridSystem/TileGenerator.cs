@@ -1,24 +1,21 @@
+using TMPro;
 using UnityEngine;
 
 public class TileGenerator : MonoBehaviour
 {
-    [SerializeField] private Transform tileParent;
+    [SerializeField] private Transform objectParent;
     [SerializeField] private BoardManager boardManager;
     [SerializeField] private PieceManager pieceManager;
-    [SerializeField] private SGridMap gridMap; //TEMPORARY----
 
     [Space]
     [SerializeField] private GameObject finishPrefab;
     [SerializeField] private GameObject piecePrefab;
+    [SerializeField] private GameObject coordCanvas; //TEMPORARY
+    [SerializeField] private bool devTools; //TEMPORARY
 
-    private void Start()
+    public void GenerateLevel(SGridMap levelData)
     {
-        HandleCreate();
-    }
-
-    private void HandleCreate()
-    {
-        foreach (var c in gridMap.Cells)
+        foreach (var c in levelData.Cells)
         {
             Vector3 cellPos = new Vector3(c.cellPosition.x, 0, c.cellPosition.y);
 
@@ -26,8 +23,13 @@ public class TileGenerator : MonoBehaviour
                 c.cellPrefab,
                 cellPos,
                 Quaternion.identity,
-                tileParent
+                objectParent
             );
+
+            if (devTools) 
+            {
+                CreateCoords(cellPos);
+            }
 
             Tile view = tileObj.GetComponent<Tile>();
             view.Initialize(c.cellPosition, boardManager);
@@ -56,7 +58,8 @@ public class TileGenerator : MonoBehaviour
                 GameObject pieceObj = Instantiate(
                     piecePrefab,
                     cellPos,
-                    Quaternion.identity
+                    Quaternion.identity,
+                    objectParent
                     );
 
                 if (c.pieceData.isEnemy)
@@ -73,7 +76,20 @@ public class TileGenerator : MonoBehaviour
                 Piece pieceScript = pieceObj.GetComponent<Piece>();
                 pieceScript.Initialize(c.pieceData, c.cellPosition);
             }
-
         }
+    }
+
+    private void CreateCoords(Vector3 pos)
+    {
+        Vector3 newPos = new Vector3(pos.x, pos.y + 0.2f, pos.z);
+
+        GameObject coord = Instantiate
+            (
+            coordCanvas,
+            newPos,
+            Quaternion.identity
+            );
+
+        boardManager.RegisterCoords(coord);
     }
 }

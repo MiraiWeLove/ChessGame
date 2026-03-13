@@ -17,6 +17,8 @@ public class TouchInputManager : MonoBehaviour
         {
             HandleTouch(Input.mousePosition);
         }
+
+        HandleKeyInputs();
 #endif
 
 #if UNITY_ANDROID || UNITY_IOS
@@ -43,7 +45,8 @@ public class TouchInputManager : MonoBehaviour
             if (clickable != null)
             {
                 clickable.OnClick();
-            } else
+            }
+            else
             {
                 gameController.DeselectPiece();
             }
@@ -51,6 +54,15 @@ public class TouchInputManager : MonoBehaviour
         else
         {
             gameController.DeselectPiece();
+        }
+    }
+
+    private void HandleKeyInputs()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("Escape pressed.");
+            UIController.Instance.TogglePause();
         }
     }
 }

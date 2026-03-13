@@ -10,23 +10,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d377bd045baeda4ea2835fc8efa6eb3, type: 3}
-  m_Name: lvl_1
+  m_Name: lvl_3
   m_EditorClassIdentifier: 
   <GridMapName>k__BackingField: lvl1
   <Cells>k__BackingField:
-  - cellPosition: {x: 3, y: 0}
+  - cellPosition: {x: 4, y: 0}
     cellPrefab: {fileID: 5524789129729733614, guid: 7978ec79ead3d4146b37c7becb91a142, type: 3}
     perkPrefab: {fileID: 0}
     pieceData: {fileID: 0}
-  - cellPosition: {x: 0, y: 0}
-    cellPrefab: {fileID: 5620850345690275739, guid: 9f68a6920f4cfff4f8e3bf46c2762b80, type: 3}
+  - cellPosition: {x: 0, y: -1}
+    cellPrefab: {fileID: 5620850345690275739, guid: 668a8cc5f0597f642bb88a090cbade7d, type: 3}
     perkPrefab: {fileID: 0}
-    pieceData: {fileID: 11400000, guid: 88f4bfdfa384f964bb5a7d64b5be6c8b, type: 2}
+    pieceData: {fileID: 11400000, guid: 31dea426f14481d4cb2445a7ef87ccbf, type: 2}
   - cellPosition: {x: 1, y: 0}
+    cellPrefab: {fileID: 5620850345690275739, guid: 9f68a6920f4cfff4f8e3bf46c2762b80, type: 3}
+    perkPrefab: {fileID: 5841873324882622971, guid: 2404d917ecde20343bcf2613377336b1, type: 3}
+    pieceData: {fileID: 0}
+  - cellPosition: {x: 2, y: 0}
     cellPrefab: {fileID: 5620850345690275739, guid: 668a8cc5f0597f642bb88a090cbade7d, type: 3}
     perkPrefab: {fileID: 0}
     pieceData: {fileID: 0}
-  - cellPosition: {x: 2, y: 0}
+  - cellPosition: {x: 2, y: 1}
+    cellPrefab: {fileID: 5620850345690275739, guid: 9f68a6920f4cfff4f8e3bf46c2762b80, type: 3}
+    perkPrefab: {fileID: 0}
+    pieceData: {fileID: 0}
+  - cellPosition: {x: 2, y: -2}
+    cellPrefab: {fileID: 5620850345690275739, guid: 668a8cc5f0597f642bb88a090cbade7d, type: 3}
+    perkPrefab: {fileID: 0}
+    pieceData: {fileID: 0}
+  - cellPosition: {x: 3, y: 0}
     cellPrefab: {fileID: 5620850345690275739, guid: 9f68a6920f4cfff4f8e3bf46c2762b80, type: 3}
     perkPrefab: {fileID: 0}
     pieceData: {fileID: 0}

@@ -3,6 +3,7 @@ using UnityEngine;
 public class UIController : MonoBehaviour
 {
     [SerializeField] private GameObject results;
+    [SerializeField] private GameObject pause;
     public static UIController Instance { get; private set; }
 
     private void Awake()
@@ -19,5 +20,11 @@ public class UIController : MonoBehaviour
     public void HaveWon()
     {
         results.SetActive(true);
+    }
+
+    public void TogglePause()
+    {
+        bool pauseStatus = pause.activeSelf;
+        pause.SetActive(!pauseStatus);
     }
 }

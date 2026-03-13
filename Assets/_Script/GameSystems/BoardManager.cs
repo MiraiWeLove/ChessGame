@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
-
+//using System.Linq;
 public class BoardManager : MonoBehaviour
 {
     private Dictionary<Vector2Int, Tile> tiles = new();
     private Dictionary<Vector2Int, Perks> perks = new();
+    private List<GameObject> coords = new(); //TEMPORARY
 
     private Vector2Int winTile;
     [SerializeField] private PieceManager pieceManager;
@@ -23,6 +25,20 @@ public class BoardManager : MonoBehaviour
     public void RegisterWinTile(Vector2Int pos)
     {
         winTile = pos;
+    }
+
+    public void RegisterCoords(GameObject coord)
+    {
+        coords.Add(coord);
+    }
+
+    public void ClearCoords()
+    {
+        foreach (var i in new List<GameObject>(coords))
+        {
+            Destroy(i);
+        }
+        coords.Clear();
     }
 
     public void UnregisterTile(Vector2Int pos)
@@ -86,7 +102,6 @@ public class BoardManager : MonoBehaviour
         perks.Clear();
     }
 
-
     // VISUALS -------------------VISUALS ---------------------------
     public void HighlightTiles(List<Vector2Int> moves, List<Vector2Int> attackMoves)
     {
@@ -96,7 +111,13 @@ public class BoardManager : MonoBehaviour
             {
                 if (tiles.TryGetValue(move, out Tile tile))
                 {
-                    tile.tileModel.GetComponent<Renderer>().material = tile.activeMaterial;
+                    bool occupied = pieceManager.PlayerPieces
+                        .Any(p => p.Position == tile.GridPosition);
+
+                    if (!occupied)
+                    {
+                        tile.tileModel.GetComponent<Renderer>().material = tile.activeMaterial;
+                    }
                 }
             }
         }

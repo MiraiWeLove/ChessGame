@@ -12,6 +12,16 @@ public class BoardManager : MonoBehaviour
     private Vector2Int winTile;
     [SerializeField] private PieceManager pieceManager;
 
+    public bool TileExists(Vector2Int pos)
+    {
+        if (tiles.ContainsKey(pos)) 
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     public void RegisterTile(Tile tile)
     {
         tiles.Add(tile.GridPosition, tile);

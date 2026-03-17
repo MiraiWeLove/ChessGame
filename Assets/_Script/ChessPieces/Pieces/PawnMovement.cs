@@ -1,17 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Scriptables/Pieces/Pawn")]
+[CreateAssetMenu(menuName = "Scriptables/Movements/Pawn")]
 public class PawnMovement : MovementStrategy
 {
-    public override List<Vector2Int> GetMoves(Vector2Int position)
+    public override List<Vector2Int> GetMoves(Vector2Int position, BoardManager board, PieceManager pieceManager)
     {
         List<Vector2Int> moves = new();
 
         Vector2Int[] dirs =
         {
             Vector2Int.right
-
         };
 
         foreach (var dir in dirs)
@@ -20,7 +19,7 @@ public class PawnMovement : MovementStrategy
         return moves;
     }
 
-    public override List<Vector2Int> GetAttackMoves(Vector2Int position) 
+    public override List<Vector2Int> GetAttackMoves(Vector2Int position, BoardManager board, PieceManager pieceManager) 
     {
         List<Vector2Int> atMoves = new();
 

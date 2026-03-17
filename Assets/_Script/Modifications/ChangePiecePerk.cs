@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PawnPerk : Perks
+public class ChangePiecePerk : Perks
 {
     [SerializeField] private PieceData pawnData;
 

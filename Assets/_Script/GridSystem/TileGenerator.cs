@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 public class TileGenerator : MonoBehaviour
@@ -26,7 +25,7 @@ public class TileGenerator : MonoBehaviour
                 objectParent
             );
 
-            if (devTools) 
+            if (devTools)
             {
                 CreateCoords(cellPos);
             }
@@ -74,7 +73,7 @@ public class TileGenerator : MonoBehaviour
                 }
 
                 Piece pieceScript = pieceObj.GetComponent<Piece>();
-                pieceScript.Initialize(c.pieceData, c.cellPosition);
+                pieceScript.Initialize(c.pieceData, c.cellPosition, boardManager, pieceManager);
             }
         }
     }

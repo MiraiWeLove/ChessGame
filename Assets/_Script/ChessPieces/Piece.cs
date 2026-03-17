@@ -6,11 +6,14 @@ public class Piece : MonoBehaviour
     public Vector2Int Position { get; private set; }
 
     private PieceData currentData;
+    private BoardManager board;
+    private PieceManager pieceManager;
 
-    public void Initialize(PieceData data, Vector2Int pos)
+    public void Initialize(PieceData data, Vector2Int pos, BoardManager targetBoard, PieceManager pieceManager)
     {
         currentData = data;
-
+        board = targetBoard;
+        this.pieceManager = pieceManager;
         Position = pos;
         ApplyVisuals();
     }
@@ -32,12 +35,12 @@ public class Piece : MonoBehaviour
 
     public List<Vector2Int> GetAvailableMoves()
     {
-        return currentData.movementType.GetMoves(Position);
+        return currentData.movementType.GetMoves(Position, board, pieceManager);
     }
 
     public List<Vector2Int> GetAttackMoves()
     {
-        return currentData.movementType.GetAttackMoves(Position);
+        return currentData.movementType.GetAttackMoves(Position, board, pieceManager);
     }
 
     public void SetPosition(Vector2Int pos)

@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Scriptables/Pieces/Knight")]
+[CreateAssetMenu(menuName = "Scriptables/Movements/Knight")]
 public class KnightMovement : MovementStrategy
 {
-    public override List<Vector2Int> GetMoves(Vector2Int position)
+    public override List<Vector2Int> GetMoves(Vector2Int position, BoardManager board, PieceManager pieceManager)
     {
         List<Vector2Int> moves = new();
         Vector2Int[] offsets =
@@ -25,9 +25,9 @@ public class KnightMovement : MovementStrategy
         return moves;
     }
 
-    public override List<Vector2Int> GetAttackMoves(Vector2Int position)
+    public override List<Vector2Int> GetAttackMoves(Vector2Int position, BoardManager board, PieceManager pieceManager)
     {
-        return GetMoves(position);
+        return GetMoves(position, board, pieceManager);
     }
 
 }

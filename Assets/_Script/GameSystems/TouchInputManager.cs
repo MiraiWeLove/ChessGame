@@ -12,26 +12,13 @@ public class TouchInputManager : MonoBehaviour
 
     private void Update()
     {
-#if UNITY_EDITOR || UNITY_STANDALONE
         if (Input.GetMouseButtonDown(0))
         {
             HandleTouch(Input.mousePosition);
         }
 
         HandleKeyInputs();
-#endif
 
-#if UNITY_ANDROID || UNITY_IOS
-    if (Input.touchCount > 0)
-    {
-        Touch touch = Input.GetTouch(0);
-
-        if (touch.phase == TouchPhase.Began)
-        {
-            HandleTouch(touch.position);
-        }
-    }
-#endif
     }
 
     private void HandleTouch(Vector2 screenPosition)

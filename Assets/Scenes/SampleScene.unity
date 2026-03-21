@@ -1363,13 +1363,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileGenerator: {fileID: 1992778535}
   levels:
-  - {fileID: 11400000, guid: 97bfe46e40faf2341aa7a2e832cc8375, type: 2}
   - {fileID: 11400000, guid: 0426847faa5f9f4449a2dbaf7cd1cd5a, type: 2}
   - {fileID: 11400000, guid: 5c58d8fa3292dfe468bf432f8ca37905, type: 2}
   - {fileID: 11400000, guid: 1a1f926b02e4d79428ca49527b1a60e2, type: 2}
   - {fileID: 11400000, guid: ab7536a6c99a36840ae61eda167f9f7e, type: 2}
-  - {fileID: 11400000, guid: 7537e53ad01347a4e81b00936ede0f8c, type: 2}
   - {fileID: 11400000, guid: 5b6474844f1315d41ba0125cb6565183, type: 2}
+  - {fileID: 11400000, guid: 7537e53ad01347a4e81b00936ede0f8c, type: 2}
+  - {fileID: 11400000, guid: 97bfe46e40faf2341aa7a2e832cc8375, type: 2}
 --- !u!1 &832178204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1814,7 +1814,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &960809072
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3625,7 +3625,7 @@ MonoBehaviour:
   finishPrefab: {fileID: 5524789129729733614, guid: 7978ec79ead3d4146b37c7becb91a142, type: 3}
   piecePrefab: {fileID: 5592095006927249999, guid: 8e0f375201a4ffe49b777bf8b1119261, type: 3}
   coordCanvas: {fileID: 7456002730813385280, guid: b14343b8ae8319444b4a31fc17796dac, type: 3}
-  devTools: 1
+  devTools: 0
 --- !u!1 &1997524944
 GameObject:
   m_ObjectHideFlags: 0

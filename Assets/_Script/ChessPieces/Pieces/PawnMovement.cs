@@ -10,7 +10,10 @@ public class PawnMovement : MovementStrategy
 
         Vector2Int[] dirs =
         {
-            Vector2Int.right
+            Vector2Int.right,
+            Vector2Int.left,
+            Vector2Int.down,
+            Vector2Int.up
         };
 
         foreach (var dir in dirs)

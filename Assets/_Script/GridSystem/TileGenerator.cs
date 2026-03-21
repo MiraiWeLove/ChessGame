@@ -9,6 +9,8 @@ public class TileGenerator : MonoBehaviour
     [Space]
     [SerializeField] private GameObject finishPrefab;
     [SerializeField] private GameObject piecePrefab;
+    [Space]
+    [Header ("DevTools")]
     [SerializeField] private GameObject coordCanvas; //TEMPORARY
     [SerializeField] private bool devTools; //TEMPORARY
 
@@ -64,6 +66,7 @@ public class TileGenerator : MonoBehaviour
                 if (c.pieceData.isEnemy)
                 {
                     EnemyPiece script = pieceObj.AddComponent<EnemyPiece>();
+                    pieceObj.GetComponent<BoxCollider>().enabled = false;
                     pieceManager.RegisterEnemyPiece(script);
                 }
                 else
@@ -71,7 +74,7 @@ public class TileGenerator : MonoBehaviour
                     PlayerPiece script = pieceObj.AddComponent<PlayerPiece>();
                     pieceManager.RegisterPlayerPiece(script);
                 }
-
+                
                 Piece pieceScript = pieceObj.GetComponent<Piece>();
                 pieceScript.Initialize(c.pieceData, c.cellPosition, boardManager, pieceManager);
             }

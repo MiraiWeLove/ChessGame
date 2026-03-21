@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ee7f5753a2592d498041723f825fcdb, type: 3}
-  m_Name: Enemy_KingData
+  m_Name: Enemy_Bishop
   m_EditorClassIdentifier: 
-  <mesh>k__BackingField: {fileID: -4175726406976504967, guid: 266d4ab01c62c564597aa055097c0d30, type: 3}
+  <mesh>k__BackingField: {fileID: -7929665542823436400, guid: 8923064e2a328e042bded929fc51c8c0, type: 3}
   <material>k__BackingField: {fileID: 2100000, guid: 5418bcc562c968b4bb5b7c20bbb5a863, type: 2}
-  <movementType>k__BackingField: {fileID: 11400000, guid: a3d0e80d7a42fb7439a826cc5f7ffce6, type: 2}
+  <movementType>k__BackingField: {fileID: 11400000, guid: 675229b2ff5eb1346899b36e518b19b5, type: 2}
   <isEnemy>k__BackingField: 1

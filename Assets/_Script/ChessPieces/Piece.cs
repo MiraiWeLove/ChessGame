@@ -5,7 +5,7 @@ public class Piece : MonoBehaviour
 {
     public Vector2Int Position { get; private set; }
 
-    private PieceData currentData;
+    public PieceData currentData { get; private set; }
     private BoardManager board;
     private PieceManager pieceManager;
 
@@ -35,6 +35,10 @@ public class Piece : MonoBehaviour
 
     public List<Vector2Int> GetAvailableMoves()
     {
+        foreach (var i in currentData.movementType.GetMoves(Position, board, pieceManager))
+        {
+            //if (pieceManager.EnemyPieces)
+        }
         return currentData.movementType.GetMoves(Position, board, pieceManager);
     }
 

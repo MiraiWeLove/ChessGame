@@ -40,7 +40,10 @@ public class GameController : MonoBehaviour
     {
         if (selectedPiece == null) return;
 
-        if (!selectedPiece.GetAvailableMoves().Contains(pos) && !selectedPiece.GetAttackMoves().Contains(pos) || pieceManager.PlayerPieces.Any(p => p.Position == pos)) return;
+        if (!selectedPiece.GetAvailableMoves().Contains(pos) &&
+            !selectedPiece.GetAttackMoves().Contains(pos) ||
+            (pieceManager.EnemyPieces.Any(p => p.Position == pos) && !selectedPiece.GetAttackMoves().Contains(pos)) ||
+            pieceManager.PlayerPieces.Any(p => p.Position == pos)) return;
 
         moveManager.ExecuteMove(selectedPiece, pos);
         turnManager.ExecuteEnemyTurn();

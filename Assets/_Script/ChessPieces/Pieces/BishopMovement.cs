@@ -29,7 +29,6 @@ public class BishopMovement : MovementStrategy
 
                 if (pieceManager.GetPieceAt(newMove) != null)
                 {
-                    Debug.Log("Step: " + step + "\nNew move: " + newMove + "\n");
                     break;
                 }
             }

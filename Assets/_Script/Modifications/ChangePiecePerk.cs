@@ -2,10 +2,16 @@ using UnityEngine;
 
 public class ChangePiecePerk : Perks
 {
-    [SerializeField] private PieceData pawnData;
+    [SerializeField] private PieceData playerPieceData;
+    [SerializeField] private PieceData enemyPieceData;
 
-    public override PieceData GetPerk()
+    public override PieceData GetPlayerPerkPiece()
     {
-        return pawnData;
+        return playerPieceData;
+    }
+
+    public override PieceData GetEnemyPerkPiece()
+    {
+        return enemyPieceData;
     }
 }

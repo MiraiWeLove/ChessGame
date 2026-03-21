@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 //using System.Linq;
 public class BoardManager : MonoBehaviour
@@ -14,7 +13,7 @@ public class BoardManager : MonoBehaviour
 
     public bool TileExists(Vector2Int pos)
     {
-        if (tiles.ContainsKey(pos)) 
+        if (tiles.ContainsKey(pos))
         {
             return true;
         }
@@ -74,9 +73,19 @@ public class BoardManager : MonoBehaviour
     {
         if (perks.TryGetValue(targetPos, out Perks perk))
         {
-            PieceData newData = perk.GetPerk();
+            PieceData newData = null;
+            bool isEnemy = piece.currentData.isEnemy;
+            if (isEnemy)
+            {
+                newData = perk.GetEnemyPerkPiece();
+            }
+            else
+            {
+                newData = perk.GetPlayerPerkPiece();
+            }
 
             piece.Transform(newData);
+
         }
     }
 
@@ -101,13 +110,13 @@ public class BoardManager : MonoBehaviour
     {
         foreach (var t in new List<Tile>(tiles.Values))
         {
-            Destroy(t.gameObject);
+            if (t != null) Destroy(t.gameObject);
         }
         tiles.Clear();
 
         foreach (var p in new List<Perks>(perks.Values))
         {
-            Destroy(p.gameObject);
+            if (p != null) Destroy(p.gameObject);
         }
         perks.Clear();
     }
@@ -122,19 +131,17 @@ public class BoardManager : MonoBehaviour
                 if (tiles.TryGetValue(move, out Tile tile))
                 {
                     bool occupied = pieceManager.PlayerPieces
+                        .Any(p => p.Position == tile.GridPosition) || pieceManager.EnemyPieces
                         .Any(p => p.Position == tile.GridPosition);
 
-                    if (!occupied)
-                    {
-                        tile.tileModel.GetComponent<Renderer>().material = tile.activeMaterial;
-                    }
+                    if (!occupied) tile.tileModel.GetComponent<Renderer>().material = tile.activeMaterial;
                 }
             }
         }
 
         if (attackMoves != null)
         {
-            foreach(var move in attackMoves)
+            foreach (var move in attackMoves)
             {
                 if (tiles.TryGetValue(move, out Tile tile))
                 {

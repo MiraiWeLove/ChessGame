@@ -7,7 +7,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private List<SGridMap> levels;
 
     private int currentLevel_number = 0;
-    //public int CurrentLevel => currentLevel_number;
 
     private void Start()
     {

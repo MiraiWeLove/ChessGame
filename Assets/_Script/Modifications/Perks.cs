@@ -9,6 +9,7 @@ public abstract class Perks : MonoBehaviour
         perkGridPosition = gridPos;
     }
 
-    public abstract PieceData GetPerk();
+    public abstract PieceData GetPlayerPerkPiece();
+    public abstract PieceData GetEnemyPerkPiece();
 
 }

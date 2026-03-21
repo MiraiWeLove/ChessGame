@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1683416314, guid: d96938f701b833a4e897b6f57f7bbd2b, type: 3}
+  m_Sprite: {fileID: -1029373520, guid: bb9c6d195a017494b9b11a7e6b3ac412, type: 3}
   m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 6589237916447556687}
   - component: {fileID: 267234537120228169}
   m_Layer: 0
-  m_Name: PawnPerk
+  m_Name: BishopPerk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,5 +132,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2781af4c37f5b4489030bfa91c876e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPieceData: {fileID: 11400000, guid: 88f4bfdfa384f964bb5a7d64b5be6c8b, type: 2}
-  enemyPieceData: {fileID: 11400000, guid: 81f265fc1b6d303498996db4438e431f, type: 2}
+  playerPieceData: {fileID: 11400000, guid: 34f0d00964a2b664d858e0007092ddda, type: 2}
+  enemyPieceData: {fileID: 11400000, guid: 470a3c5692b351845825349c9c7d7e78, type: 2}

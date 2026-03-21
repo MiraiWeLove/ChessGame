@@ -54,33 +54,33 @@ public class PieceManager : MonoBehaviour
         Destroy(piece.gameObject);
     }
 
-    public PlayerPiece GetAttackTarget(EnemyPiece enemy)
-    {
-        var attackMoves = enemy.GetAttackMoves();
+    //public PlayerPiece GetAttackTarget(EnemyPiece enemy)
+    //{
+    //    var attackMoves = enemy.GetAttackMoves();
 
-        foreach (var player in playerPieces)
-        {
-            if (attackMoves.Contains(player.Position))
-            {
-                return player;
-            }
-        }
+    //    foreach (var player in playerPieces)
+    //    {
+    //        if (attackMoves.Contains(player.Position))
+    //        {
+    //            return player;
+    //        }
+    //    }
 
-        return null;
-    }
+    //    return null;
+    //}
 
 
     public void ClearPieces()
     {
         foreach (var p in new List<PlayerPiece>(playerPieces))
         {
-            Destroy(p.gameObject);
+            if (p != null) Destroy(p.gameObject);
         }
         playerPieces.Clear();
 
         foreach (var p in new List<EnemyPiece>(enemyPieces))
         {
-            Destroy(p.gameObject);
+            if (p != null) Destroy(p.gameObject);
         }
         enemyPieces.Clear();
     }

@@ -35,12 +35,14 @@ public class Piece : MonoBehaviour
 
     public List<Vector2Int> GetAvailableMoves()
     {
-        foreach (var i in currentData.movementType.GetMoves(Position, board, pieceManager))
-        {
-            //if (pieceManager.EnemyPieces)
-        }
+        //foreach (var i in currentData.movementType.GetMoves(Position, board, pieceManager))
+        //{
+        //    //if (pieceManager.EnemyPieces)
+        //}
         return currentData.movementType.GetMoves(Position, board, pieceManager);
     }
+
+
 
     public List<Vector2Int> GetAttackMoves()
     {

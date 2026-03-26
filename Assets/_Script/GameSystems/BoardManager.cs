@@ -1,16 +1,18 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 //using System.Linq;
 public class BoardManager : MonoBehaviour
 {
     private Dictionary<Vector2Int, Tile> tiles = new();
     private Dictionary<Vector2Int, Perks> perks = new();
+
     private List<GameObject> coords = new(); //TEMPORARY
 
     private Vector2Int winTile;
     [SerializeField] private PieceManager pieceManager;
-
+    [SerializeField] private Material canMoveMaterial;
+    [SerializeField] private Material canAttackMaterial;
+    [SerializeField] private Material castlingMaterial;
     public bool TileExists(Vector2Int pos)
     {
         if (tiles.ContainsKey(pos))
@@ -130,11 +132,12 @@ public class BoardManager : MonoBehaviour
             {
                 if (tiles.TryGetValue(move, out Tile tile))
                 {
-                    bool occupied = pieceManager.PlayerPieces
-                        .Any(p => p.Position == tile.GridPosition) || pieceManager.EnemyPieces
-                        .Any(p => p.Position == tile.GridPosition);
+                    tile.SetMaterial(canMoveMaterial);
 
-                    if (!occupied) tile.tileModel.GetComponent<Renderer>().material = tile.activeMaterial;
+                    //Debug.Log("GET KING: " + pieceManager._kingData);
+                    //Debug.Log("GET PIECE AT: " + pieceManager.GetPieceAt(move));
+
+                    if (pieceManager.GetPieceAt(move) != null && pieceManager.GetPieceAt(move).currentData == pieceManager._kingData) tile.SetMaterial(castlingMaterial);
                 }
             }
         }
@@ -149,13 +152,12 @@ public class BoardManager : MonoBehaviour
                     {
                         if (enemy.Position == tile.GridPosition)
                         {
-                            tile.tileModel.GetComponent<Renderer>().material = tile.attackMaterial;
+                            tile.SetMaterial(canAttackMaterial);
                         }
                     }
                 }
             }
         }
-
     }
 
     public void ClearHighlights()
@@ -164,7 +166,7 @@ public class BoardManager : MonoBehaviour
 
         foreach (var tile in tiles.Values)
         {
-            tile.tileModel.GetComponent<Renderer>().material = tile.defaultMaterial;
+            tile.SetMaterial(tile.defaultMaterial);
         }
     }
 

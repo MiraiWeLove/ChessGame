@@ -1363,12 +1363,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileGenerator: {fileID: 1992778535}
   levels:
+  - {fileID: 11400000, guid: 26f1bf5276ababa4da3959b84df2c1f9, type: 2}
   - {fileID: 11400000, guid: 0426847faa5f9f4449a2dbaf7cd1cd5a, type: 2}
   - {fileID: 11400000, guid: 5c58d8fa3292dfe468bf432f8ca37905, type: 2}
   - {fileID: 11400000, guid: 1a1f926b02e4d79428ca49527b1a60e2, type: 2}
   - {fileID: 11400000, guid: ab7536a6c99a36840ae61eda167f9f7e, type: 2}
   - {fileID: 11400000, guid: 5b6474844f1315d41ba0125cb6565183, type: 2}
   - {fileID: 11400000, guid: 7537e53ad01347a4e81b00936ede0f8c, type: 2}
+  - {fileID: 11400000, guid: 353640c233d749948a251fe95f20c9b9, type: 2}
   - {fileID: 11400000, guid: 97bfe46e40faf2341aa7a2e832cc8375, type: 2}
 --- !u!1 &832178204
 GameObject:
@@ -1814,7 +1816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &960809072
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2604,6 +2606,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2268b913c9a4a8a4893b1d47148c30df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <_kingData>k__BackingField: {fileID: 11400000, guid: 869d35c8932491b4d82a662d75ead9fb, type: 2}
+  <_rookData>k__BackingField: {fileID: 11400000, guid: b9901babf82f89e439b8c9789a56af60, type: 2}
 --- !u!4 &1465901246
 Transform:
   m_ObjectHideFlags: 0
@@ -2782,6 +2786,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceManager: {fileID: 1465901245}
+  canMoveMaterial: {fileID: 2100000, guid: 903997b4bf0b6ec439713a843636024d, type: 2}
+  canAttackMaterial: {fileID: 2100000, guid: 2bbe1fa853610a04d849316fd6a4d0bb, type: 2}
+  castlingMaterial: {fileID: 2100000, guid: 4135f236b605b6e42b8ecf3dc4b6a26d, type: 2}
 --- !u!4 &1584411583
 Transform:
   m_ObjectHideFlags: 0
@@ -3625,7 +3632,7 @@ MonoBehaviour:
   finishPrefab: {fileID: 5524789129729733614, guid: 7978ec79ead3d4146b37c7becb91a142, type: 3}
   piecePrefab: {fileID: 5592095006927249999, guid: 8e0f375201a4ffe49b777bf8b1119261, type: 3}
   coordCanvas: {fileID: 7456002730813385280, guid: b14343b8ae8319444b4a31fc17796dac, type: 3}
-  devTools: 0
+  devTools: 1
 --- !u!1 &1997524944
 GameObject:
   m_ObjectHideFlags: 0

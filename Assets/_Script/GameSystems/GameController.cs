@@ -40,6 +40,17 @@ public class GameController : MonoBehaviour
     {
         if (selectedPiece == null) return;
 
+        foreach (var p in pieceManager.PlayerPieces) 
+        {
+            if (p.Position == pos && p.currentData == pieceManager._kingData) 
+            {
+                moveManager.ExecuteCastling(pos, selectedPiece);
+
+                turnManager.ExecuteEnemyTurn();
+                return;
+            }
+        }
+
         if (!selectedPiece.GetAvailableMoves().Contains(pos) &&
             !selectedPiece.GetAttackMoves().Contains(pos) ||
             (pieceManager.EnemyPieces.Any(p => p.Position == pos) && !selectedPiece.GetAttackMoves().Contains(pos)) ||
@@ -48,6 +59,7 @@ public class GameController : MonoBehaviour
         moveManager.ExecuteMove(selectedPiece, pos);
         turnManager.ExecuteEnemyTurn();
     }
+
 
     public void DeclareWin()
     {

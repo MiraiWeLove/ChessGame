@@ -9,6 +9,10 @@ public class PieceManager : MonoBehaviour
     public IReadOnlyList<EnemyPiece> EnemyPieces => enemyPieces;
     public IReadOnlyList<PlayerPiece> PlayerPieces => playerPieces;
 
+    [field: SerializeField] public PieceData _kingData { get; private set; } //Can be changed later (architectural question)
+    [field: SerializeField] public PieceData _rookData { get; private set; } //Can be changed later (architectural question)
+
+
     public void RegisterEnemyPiece(EnemyPiece piece)
     {
         enemyPieces.Add(piece);

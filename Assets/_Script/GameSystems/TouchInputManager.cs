@@ -48,7 +48,6 @@ public class TouchInputManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("Escape pressed.");
             UIController.Instance.TogglePause();
         }
     }

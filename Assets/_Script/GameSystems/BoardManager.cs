@@ -134,10 +134,11 @@ public class BoardManager : MonoBehaviour
                 {
                     tile.SetMaterial(canMoveMaterial);
 
-                    //Debug.Log("GET KING: " + pieceManager._kingData);
-                    //Debug.Log("GET PIECE AT: " + pieceManager.GetPieceAt(move));
+                    if (pieceManager.GetPieceAt(move) != null && pieceManager.GetPieceAt(move).currentData == pieceManager._kingData)
+                    {
+                        tile.SetMaterial(castlingMaterial);
 
-                    if (pieceManager.GetPieceAt(move) != null && pieceManager.GetPieceAt(move).currentData == pieceManager._kingData) tile.SetMaterial(castlingMaterial);
+                    }
                 }
             }
         }

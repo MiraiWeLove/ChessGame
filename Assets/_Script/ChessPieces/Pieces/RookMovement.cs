@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scriptables/Movements/Rook")]
@@ -32,10 +33,23 @@ public class RookMovement : MovementStrategy
                 if (targetPiece != null)
                 {
                     moves.Remove(targetPiece.Position);
-                    if (targetPiece.currentData == pieceManager._kingData) 
+
+                    if (pieceManager.GetPieceAt(position) is EnemyPiece && pieceManager.PlayerPieces.Contains(targetPiece))
                     {
                         moves.Add(newMove);
                     }
+
+
+                    if (pieceManager.GetPieceAt(position) is PlayerPiece && pieceManager.EnemyPieces.Contains(targetPiece))
+                    {
+                        moves.Add(newMove);
+                    }
+
+                    if (targetPiece.currentData == pieceManager._kingData && step >= 3) 
+                    {
+                        moves.Add(newMove);
+                    }
+
                     break;
                 }
             }

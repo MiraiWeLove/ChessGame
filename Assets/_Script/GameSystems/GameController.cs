@@ -38,7 +38,8 @@ public class GameController : MonoBehaviour
 
     public void SelectTile(Vector2Int pos)
     {
-        if (selectedPiece == null) return;
+        if (selectedPiece == null || !selectedPiece.GetAvailableMoves().Contains(pos) &&
+            !selectedPiece.GetAttackMoves().Contains(pos)) return;
 
         foreach (var p in pieceManager.PlayerPieces) 
         {
@@ -51,9 +52,7 @@ public class GameController : MonoBehaviour
             }
         }
 
-        if (!selectedPiece.GetAvailableMoves().Contains(pos) &&
-            !selectedPiece.GetAttackMoves().Contains(pos) ||
-            (pieceManager.EnemyPieces.Any(p => p.Position == pos) && !selectedPiece.GetAttackMoves().Contains(pos)) ||
+        if ((pieceManager.EnemyPieces.Any(p => p.Position == pos) && !selectedPiece.GetAttackMoves().Contains(pos)) ||
             pieceManager.PlayerPieces.Any(p => p.Position == pos)) return;
 
         moveManager.ExecuteMove(selectedPiece, pos);

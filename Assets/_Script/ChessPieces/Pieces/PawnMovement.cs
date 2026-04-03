@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scriptables/Movements/Pawn")]
@@ -15,9 +16,20 @@ public class PawnMovement : MovementStrategy
             Vector2Int.down,
             Vector2Int.up
         };
+        Piece currentPiece = pieceManager.GetPieceAt(position);
 
-        foreach (var dir in dirs)
-            moves.Add(position + dir);
+
+        foreach (var offset in dirs)
+        {
+            Vector2Int newMove = position + offset;
+
+            Piece targetPiece = pieceManager.GetPieceAt(newMove);
+
+            if (targetPiece == null)
+            {
+                moves.Add(newMove);
+            }
+        }
 
         return moves;
     }

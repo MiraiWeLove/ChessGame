@@ -8,7 +8,7 @@ public class Tile : MonoBehaviour, IClickable
     [field: SerializeField] public GameObject tileModel { get; private set; }
     public Perks tilePerk { get; private set; }
 
-    private TileEffect effect;
+    [SerializeField] private TileEffect effect;
     private BoardManager board;
     private Renderer tileRenderer;
 

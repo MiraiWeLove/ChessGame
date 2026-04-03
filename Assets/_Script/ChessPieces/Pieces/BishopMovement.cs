@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scriptables/Movements/Bishop")]
@@ -27,8 +28,23 @@ public class BishopMovement : MovementStrategy
 
                 moves.Add(newMove);
 
-                if (pieceManager.GetPieceAt(newMove) != null)
+                Piece targetPiece = pieceManager.GetPieceAt(newMove);
+
+                if (targetPiece != null)
                 {
+                    moves.Remove(targetPiece.Position);
+
+                    if (pieceManager.GetPieceAt(position) is EnemyPiece && pieceManager.PlayerPieces.Contains(targetPiece))
+                    {
+                        moves.Add(newMove);
+                    }
+
+
+                    if (pieceManager.GetPieceAt(position) is PlayerPiece && pieceManager.EnemyPieces.Contains(targetPiece))
+                    {
+                        moves.Add(newMove);
+                    }
+
                     break;
                 }
             }

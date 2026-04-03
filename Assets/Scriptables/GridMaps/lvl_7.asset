@@ -14,63 +14,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <GridMapName>k__BackingField: 
   <Cells>k__BackingField:
-  - cellPosition: {x: 1, y: 0}
+  - cellPosition: {x: 3, y: 0}
     cellPrefab: {fileID: 5524789129729733614, guid: 7978ec79ead3d4146b37c7becb91a142, type: 3}
     perkPrefab: {fileID: 0}
     pieceData: {fileID: 0}
   - cellPosition: {x: 0, y: 0}
     cellPrefab: {fileID: 5620850345690275739, guid: 9f68a6920f4cfff4f8e3bf46c2762b80, type: 3}
     perkPrefab: {fileID: 0}
+    pieceData: {fileID: 11400000, guid: 869d35c8932491b4d82a662d75ead9fb, type: 2}
+  - cellPosition: {x: 2, y: 1}
+    cellPrefab: {fileID: 5620850345690275739, guid: 9f68a6920f4cfff4f8e3bf46c2762b80, type: 3}
+    perkPrefab: {fileID: 0}
+    pieceData: {fileID: 11400000, guid: 4981999d964ec764f8560d87c3ac45b3, type: 2}
+  - cellPosition: {x: 1, y: 1}
+    cellPrefab: {fileID: 5620850345690275739, guid: 668a8cc5f0597f642bb88a090cbade7d, type: 3}
+    perkPrefab: {fileID: 0}
     pieceData: {fileID: 0}
-  - cellPosition: {x: -1, y: 0}
+  - cellPosition: {x: 2, y: 2}
+    cellPrefab: {fileID: 5620850345690275739, guid: 668a8cc5f0597f642bb88a090cbade7d, type: 3}
+    perkPrefab: {fileID: 5841873324882622971, guid: 2404d917ecde20343bcf2613377336b1, type: 3}
+    pieceData: {fileID: 11400000, guid: 81f265fc1b6d303498996db4438e431f, type: 2}
+  - cellPosition: {x: 2, y: -1}
     cellPrefab: {fileID: 5620850345690275739, guid: 668a8cc5f0597f642bb88a090cbade7d, type: 3}
     perkPrefab: {fileID: 0}
     pieceData: {fileID: 11400000, guid: 31dea426f14481d4cb2445a7ef87ccbf, type: 2}
-  - cellPosition: {x: 1, y: 1}
-    cellPrefab: {fileID: 5620850345690275739, guid: 9f68a6920f4cfff4f8e3bf46c2762b80, type: 3}
-    perkPrefab: {fileID: 0}
-    pieceData: {fileID: 11400000, guid: 81f265fc1b6d303498996db4438e431f, type: 2}
-  - cellPosition: {x: 1, y: 2}
-    cellPrefab: {fileID: 5620850345690275739, guid: 9f68a6920f4cfff4f8e3bf46c2762b80, type: 3}
-    perkPrefab: {fileID: 0}
-    pieceData: {fileID: 11400000, guid: 88f4bfdfa384f964bb5a7d64b5be6c8b, type: 2}
   - cellPosition: {x: 1, y: -1}
+    cellPrefab: {fileID: 5620850345690275739, guid: 668a8cc5f0597f642bb88a090cbade7d, type: 3}
+    perkPrefab: {fileID: 0}
+    pieceData: {fileID: 0}
+  - cellPosition: {x: 3, y: 1}
     cellPrefab: {fileID: 5620850345690275739, guid: 9f68a6920f4cfff4f8e3bf46c2762b80, type: 3}
     perkPrefab: {fileID: 0}
     pieceData: {fileID: 0}
-  - cellPosition: {x: 0, y: 2}
-    cellPrefab: {fileID: 5620850345690275739, guid: 668a8cc5f0597f642bb88a090cbade7d, type: 3}
-    perkPrefab: {fileID: 0}
-    pieceData: {fileID: 0}
-  - cellPosition: {x: -1, y: 3}
-    cellPrefab: {fileID: 5620850345690275739, guid: 668a8cc5f0597f642bb88a090cbade7d, type: 3}
-    perkPrefab: {fileID: 0}
-    pieceData: {fileID: 0}
-  - cellPosition: {x: -2, y: 4}
+  - cellPosition: {x: 0, y: -1}
     cellPrefab: {fileID: 5620850345690275739, guid: 9f68a6920f4cfff4f8e3bf46c2762b80, type: 3}
     perkPrefab: {fileID: 0}
-    pieceData: {fileID: 11400000, guid: 470a3c5692b351845825349c9c7d7e78, type: 2}
-  - cellPosition: {x: -3, y: 3}
-    cellPrefab: {fileID: 5620850345690275739, guid: 668a8cc5f0597f642bb88a090cbade7d, type: 3}
-    perkPrefab: {fileID: 0}
-    pieceData: {fileID: 0}
-  - cellPosition: {x: -4, y: 2}
-    cellPrefab: {fileID: 5620850345690275739, guid: 668a8cc5f0597f642bb88a090cbade7d, type: 3}
-    perkPrefab: {fileID: 5841873324882622971, guid: 6d2b2b0a905a8814cbce42a8e466e392, type: 3}
-    pieceData: {fileID: 0}
-  - cellPosition: {x: -3, y: 1}
-    cellPrefab: {fileID: 5620850345690275739, guid: 668a8cc5f0597f642bb88a090cbade7d, type: 3}
-    perkPrefab: {fileID: 0}
-    pieceData: {fileID: 0}
-  - cellPosition: {x: -2, y: 0}
-    cellPrefab: {fileID: 5620850345690275739, guid: 668a8cc5f0597f642bb88a090cbade7d, type: 3}
-    perkPrefab: {fileID: 0}
-    pieceData: {fileID: 11400000, guid: 869d35c8932491b4d82a662d75ead9fb, type: 2}
-  - cellPosition: {x: 2, y: 0}
-    cellPrefab: {fileID: 5620850345690275739, guid: 668a8cc5f0597f642bb88a090cbade7d, type: 3}
-    perkPrefab: {fileID: 0}
-    pieceData: {fileID: 0}
-  - cellPosition: {x: 3, y: -1}
-    cellPrefab: {fileID: 5620850345690275739, guid: 668a8cc5f0597f642bb88a090cbade7d, type: 3}
-    perkPrefab: {fileID: 5841873324882622971, guid: 9c42ad0278b540b40aaa161b53a7851b, type: 3}
     pieceData: {fileID: 0}

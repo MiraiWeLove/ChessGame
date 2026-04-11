@@ -5,10 +5,15 @@ public class MoveManager : MonoBehaviour
 {
     [SerializeField] private BoardManager board;
     [SerializeField] private PieceManager pieceManager;
+    [SerializeField] private AnimationSystem animationSystem;
 
     public void ExecuteMove(Piece piece, Vector2Int targetPos)
     {
+
+
+
         Vector2Int oldPos = piece.Position;
+        Vector3 vec3TargetPos = new Vector3(targetPos.x, 0, targetPos.y);
 
         Piece pieceOnTarget = pieceManager.GetPieceAt(targetPos);
         if (pieceOnTarget != null)
@@ -18,8 +23,8 @@ public class MoveManager : MonoBehaviour
 
         board.NotifyPieceExit(oldPos, piece);
 
+        animationSystem.ExecuteAnimation(piece.transform, vec3TargetPos, animationSystem);
         piece.SetPosition(targetPos);
-        piece.UpdateViewPosition();
 
         board.NotifyPieceEnter(targetPos, piece);
 

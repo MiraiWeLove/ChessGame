@@ -35,10 +35,6 @@ public class Piece : MonoBehaviour
 
     public List<Vector2Int> GetAvailableMoves()
     {
-        //foreach (var i in currentData.movementType.GetMoves(Position, board, pieceManager))
-        //{
-        //    //if (pieceManager.EnemyPieces)
-        //}
         return currentData.movementType.GetMoves(Position, board, pieceManager);
     }
 
@@ -54,8 +50,4 @@ public class Piece : MonoBehaviour
         Position = pos;
     }
 
-    public void UpdateViewPosition()
-    {
-        transform.position = new Vector3(Position.x, 0, Position.y);
-    }
 }

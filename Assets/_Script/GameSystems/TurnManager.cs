@@ -1,4 +1,4 @@
-using UnityEditor.Overlays;
+using System.Collections;
 using UnityEngine;
 
 public class TurnManager : MonoBehaviour
@@ -31,9 +31,16 @@ public class TurnManager : MonoBehaviour
 
         if (pieceToRemove != null)
         {
-            pieceManager.RemovePiece(pieceToRemove);
-            moveManager.ExecuteMove(enemyPieceToMove, attackPosition);
+            StartCoroutine(EnemyAttackRoutine(pieceToRemove, enemyPieceToMove, attackPosition));
         }
 
+    }
+
+    IEnumerator EnemyAttackRoutine(Piece target, Piece attacker, Vector2Int pos)
+    {
+        yield return StartCoroutine(moveManager.ExecuteMove(attacker, pos));
+
+        if (target != null)
+            pieceManager.RemovePiece(target);
     }
 }

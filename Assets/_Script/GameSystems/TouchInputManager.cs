@@ -11,6 +11,12 @@ public class TouchInputManager : MonoBehaviour
     private void Awake()
     {
         cam = Camera.main;
+
+        if (cam == null)
+        {
+            cam = FindFirstObjectByType<Camera>();
+            Debug.LogWarning("MainCamera not found, using fallback camera.");
+        }
     }
 
     private void Update()

@@ -6,9 +6,14 @@ public class PausePanel : MonoBehaviour
 
     public void Restart()
     {
-        Debug.Log("RESTART");
         levelManager.RestartLevel();
 
+        gameObject.SetActive(false);
+    }
+
+    public void StartOver()
+    {
+        levelManager.StartOver();
         gameObject.SetActive(false);
     }
 

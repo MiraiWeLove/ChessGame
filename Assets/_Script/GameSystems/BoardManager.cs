@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-//using System.Linq;
+using System.Collections;
+
 public class BoardManager : MonoBehaviour
 {
     private Dictionary<Vector2Int, Tile> tiles = new();
@@ -13,6 +14,10 @@ public class BoardManager : MonoBehaviour
     [SerializeField] private Material canMoveMaterial;
     [SerializeField] private Material canAttackMaterial;
     [SerializeField] private Material castlingMaterial;
+
+    [Space]
+    [SerializeField] private AnimationSystem animationSystem;
+
     public bool TileExists(Vector2Int pos)
     {
         if (tiles.ContainsKey(pos))
@@ -107,21 +112,32 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-
-    public void ClearBoard()
+    public IEnumerator ClearBoard()
     {
-        foreach (var t in new List<Tile>(tiles.Values))
-        {
-            if (t != null) Destroy(t.gameObject);
-        }
-        tiles.Clear();
+        animationSystem.setAnimating_TRUE();
 
         foreach (var p in new List<Perks>(perks.Values))
         {
-            if (p != null) Destroy(p.gameObject);
+            if (p != null)
+                Destroy(p.gameObject);
         }
         perks.Clear();
+
+        foreach (var t in new List<Tile>(tiles.Values))
+        {
+            if (t != null)
+            {
+                animationSystem.Play(AnimationType.TileDespawn, t.transform, Vector3.zero);
+
+                yield return new WaitForSeconds(0.05f);
+
+                Destroy(t.gameObject);
+            }
+        }
+
+        tiles.Clear();
     }
+
 
     // VISUALS -------------------VISUALS ---------------------------
     public void HighlightTiles(List<Vector2Int> moves, List<Vector2Int> attackMoves)

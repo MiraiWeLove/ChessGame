@@ -1,10 +1,12 @@
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public class TileGenerator : MonoBehaviour
 {
     [SerializeField] private Transform objectParent;
     [SerializeField] private BoardManager boardManager;
     [SerializeField] private PieceManager pieceManager;
+    [SerializeField] private AnimationSystem animationSystem;
 
     [Space]
     [SerializeField] private GameObject finishPrefab;
@@ -16,6 +18,13 @@ public class TileGenerator : MonoBehaviour
 
     public void GenerateLevel(SGridMap levelData)
     {
+        StartCoroutine(GenerateLevelRoutine(levelData));
+    }
+
+    private IEnumerator GenerateLevelRoutine(SGridMap levelData)
+    {
+        float delay = 0.05f;
+
         foreach (var c in levelData.Cells)
         {
             Vector3 cellPos = new Vector3(c.cellPosition.x, 0, c.cellPosition.y);
@@ -37,16 +46,17 @@ public class TileGenerator : MonoBehaviour
 
             boardManager.RegisterTile(view);
 
-            if (c.cellPrefab == finishPrefab) boardManager.RegisterWinTile(c.cellPosition);
+            if (c.cellPrefab == finishPrefab)
+                boardManager.RegisterWinTile(c.cellPosition);
 
             if (c.perkPrefab != null)
             {
                 GameObject perkObj = Instantiate(
-                        c.perkPrefab,
-                        cellPos,
-                        Quaternion.identity,
-                        tileObj.transform
-                    );
+                    c.perkPrefab,
+                    cellPos,
+                    Quaternion.identity,
+                    tileObj.transform
+                );
 
                 Perks perkScript = perkObj.GetComponent<Perks>();
                 perkScript.Initialize(c.cellPosition);
@@ -61,12 +71,12 @@ public class TileGenerator : MonoBehaviour
                     cellPos,
                     Quaternion.identity,
                     objectParent
-                    );
+                );
 
                 if (c.pieceData.isEnemy)
                 {
                     EnemyPiece script = pieceObj.AddComponent<EnemyPiece>();
-                    pieceObj.GetComponent<BoxCollider>().enabled = false;
+                    pieceObj.GetComponent<CapsuleCollider>().enabled = false;
                     pieceManager.RegisterEnemyPiece(script);
                 }
                 else
@@ -74,10 +84,15 @@ public class TileGenerator : MonoBehaviour
                     PlayerPiece script = pieceObj.AddComponent<PlayerPiece>();
                     pieceManager.RegisterPlayerPiece(script);
                 }
-                
+
                 Piece pieceScript = pieceObj.GetComponent<Piece>();
                 pieceScript.Initialize(c.pieceData, c.cellPosition, boardManager, pieceManager);
+                animationSystem.Play(AnimationType.PieceSpawn, pieceObj.transform, cellPos);
             }
+
+            animationSystem.Play(AnimationType.TileSpawn, tileObj.transform, cellPos);
+
+            yield return new WaitForSeconds(delay);
         }
     }
 

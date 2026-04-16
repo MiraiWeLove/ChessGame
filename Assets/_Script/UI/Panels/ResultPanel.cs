@@ -6,8 +6,6 @@ public class ResultPanel : MonoBehaviour
 
     public void HandleNext()
     {
-        Debug.Log("NEXT CLICKED");
-
         levelManager.LoadNextLevel();
 
         this.gameObject.SetActive(false);

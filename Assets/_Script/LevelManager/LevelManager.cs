@@ -1,27 +1,30 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private TileGenerator tileGenerator;
+    [SerializeField] private UIController uiController;
     [SerializeField] private List<SGridMap> levels;
+    [SerializeField] private AnimationSystem animationSystem;
 
     private int currentLevel_number = 0;
 
     private void Start()
     {
-        LoadLevel(currentLevel_number);
+        StartCoroutine(LoadLevel(currentLevel_number));
     }
 
-    public void LoadLevel(int index)
+    public IEnumerator LoadLevel(int index)
     {
         if (index < 0 || index >= levels.Count)
         {
-            Debug.LogWarning("Level index out of range");
-            return;
+            uiController.ToggleEnd();
+            yield break;
         }
 
-        GameController.Instance.ClearScene();
+        yield return StartCoroutine(GameController.Instance.ClearScene());
 
         SGridMap loadLevel = levels[index];
 
@@ -30,22 +33,23 @@ public class LevelManager : MonoBehaviour
             tileGenerator.GenerateLevel(loadLevel);
             currentLevel_number = index;
         }
-        else
-        {
-            Debug.LogWarning("Level data is null");
-        }
     }
 
     public void LoadNextLevel()
     {
         currentLevel_number++;
-        LoadLevel(currentLevel_number);
+        StartCoroutine(LoadLevel(currentLevel_number));
     }
 
     public void RestartLevel()
     {
-        LoadLevel(currentLevel_number);
+        StartCoroutine(LoadLevel(currentLevel_number));
     }
 
+    public void StartOver()
+    {
+        currentLevel_number = 0;
+        StartCoroutine(LoadLevel(currentLevel_number));
+    }
 
 }

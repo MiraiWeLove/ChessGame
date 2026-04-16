@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using System.Collections;
 
 public class GameController : MonoBehaviour
 {
@@ -8,9 +9,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private MoveManager moveManager;
     [SerializeField] private TurnManager turnManager;
     [SerializeField] private PieceManager pieceManager;
+    [SerializeField] private AnimationSystem animationSystem;
 
     public static GameController Instance;
-
 
     private void Awake()
     {
@@ -39,24 +40,39 @@ public class GameController : MonoBehaviour
 
     public void SelectTile(Vector2Int pos)
     {
-        if (selectedPiece == null || !selectedPiece.GetAvailableMoves().Contains(pos) &&
-            !selectedPiece.GetAttackMoves().Contains(pos)) return;
+        StartCoroutine(SelectTileRoutine(pos));
+    }
 
-        foreach (var p in pieceManager.PlayerPieces) 
+    private IEnumerator SelectTileRoutine(Vector2Int pos)
+    {
+
+        if (selectedPiece == null)
+            yield break;
+
+        bool isMove = selectedPiece.GetAvailableMoves().Contains(pos);
+        bool isAttack = selectedPiece.GetAttackMoves().Contains(pos);
+        bool hasEnemy = pieceManager.EnemyPieces.Any(p => p.Position == pos);
+
+        if (!isMove && !(isAttack && hasEnemy))
+            yield break;
+
+        foreach (var p in pieceManager.PlayerPieces)
         {
-            if (p.Position == pos && p.currentData == pieceManager._kingData) 
+            if (p.Position == pos && p.currentData == pieceManager._kingData)
             {
-                moveManager.ExecuteCastling(pos, selectedPiece);
+                StartCoroutine(moveManager.ExecuteCastling(pos, selectedPiece));
+                yield return new WaitUntil(() => !animationSystem.isAnimating);
 
                 turnManager.ExecuteEnemyTurn();
-                return;
+                yield break;
             }
         }
 
-        if ((pieceManager.EnemyPieces.Any(p => p.Position == pos) && !selectedPiece.GetAttackMoves().Contains(pos)) ||
-            pieceManager.PlayerPieces.Any(p => p.Position == pos)) return;
+        if (pieceManager.PlayerPieces.Any(p => p.Position == pos))
+            yield break;
 
-        moveManager.ExecuteMove(selectedPiece, pos);
+        yield return StartCoroutine(moveManager.ExecuteMove(selectedPiece, pos));
+        DeselectPiece();
         turnManager.ExecuteEnemyTurn();
     }
 
@@ -66,9 +82,9 @@ public class GameController : MonoBehaviour
         UIController.Instance.HaveWon();
     }
 
-    public void ClearScene()
+    public IEnumerator ClearScene()
     {
-        board.ClearBoard();
         pieceManager.ClearPieces();
+        yield return StartCoroutine(board.ClearBoard());
     }
 }
